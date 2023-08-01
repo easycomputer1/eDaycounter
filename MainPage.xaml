@@ -6,17 +6,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="804">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.Background>
+            <AcrylicBrush BackgroundSource="HostBackdrop"/>
+        </Grid.Background>
         <TextBlock HorizontalAlignment="Left" Margin="80,88,0,0" TextWrapping="Wrap" Text="日期计数器" VerticalAlignment="Top" FontSize="35"/>
-        <DatePicker x:Name="DatePicker" Height="52" Margin="80,250,0,0" VerticalAlignment="Top" Width="363" FontSize="20"
+        <DatePicker x:Name="DatePicker" Height="52" Margin="81,598,0,0" VerticalAlignment="Top" Width="363" FontSize="20"
                     DayFormat="{}{day.integer} {dayofweek.abbreviated}"
                     SelectedDateChanged="Date_Changed"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="80,206,0,0" TextWrapping="Wrap" Text="当前选取日期" VerticalAlignment="Top" Width="139" FontSize="20" />
-        <Button Content="清除日期" Height="38" Margin="483,250,0,0" VerticalAlignment="Top" Width="102" FontSize="18" Click="ClearButton_Click"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="224,206,0,0" TextWrapping="Wrap" x:Name="PresentTime" VerticalAlignment="Top" Width="200" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="385,102,0,0" TextWrapping="Wrap" x:Name="TimeResult" VerticalAlignment="Top" Width="250" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="81,554,0,0" TextWrapping="Wrap" Text="当前选取日期" VerticalAlignment="Top" Width="139" FontSize="20" />
+        <Button Content="清除日期" Height="38" Margin="484,598,0,0" VerticalAlignment="Top" Width="102" FontSize="18" Click="ClearButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="255,554,0,0" TextWrapping="Wrap" x:Name="PresentTime" VerticalAlignment="Top" Width="200" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Height="90" Margin="81,184,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" x:Name="TimeResult" Width="664" FontFamily="Microsoft YaHei UI" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Height="258" Margin="81,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" x:Name="TimeResultShow" Width="706" FontSize="50" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+
+        <TextBlock x:Name="currentVersion" HorizontalAlignment="Left" Height="31" Margin="80,686,0,0" TextWrapping="Wrap" Text="版本获取中" VerticalAlignment="Top" Width="175" FontSize="18"/>
+        <Button Content="Button" Margin="1772,390,0,0" VerticalAlignment="Top" Width="0"/>
 
     </Grid>
 </Page>

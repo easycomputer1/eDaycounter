@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -30,20 +31,31 @@ namespace eDaycounter
     public sealed partial class MainPage : Page
     {
         DateTime ArrTime;
+
         
         public MainPage()
         {
             this.InitializeComponent();
-            
-        }
+            GetVersion();
 
+
+
+        }
+        public void GetVersion() {
+            string appVersion = string.Format("当前版本：{0}.{1}.{2}.{3}",
+                    Package.Current.Id.Version.Major,
+                    Package.Current.Id.Version.Minor,
+                    Package.Current.Id.Version.Build,
+                    Package.Current.Id.Version.Revision);
+            currentVersion.Text= appVersion;
+        }
         private void Date_Changed(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
         {
             if (DatePicker.SelectedDate != null)
             {
                 ArrTime = new DateTime(args.NewDate.Value.Year, args.NewDate.Value.Month, args.NewDate.Value.Day);
             }
-           string timeString= ArrTime.ToString();
+           string timeString= ArrTime.ToLongDateString().ToString();
             PresentTime.Text = timeString;
            CountTime(ArrTime);
         }
@@ -57,11 +69,13 @@ namespace eDaycounter
         {
             DateTime NowTime = System.DateTime.Now;
             TimeSpan diffTime = SetTime.Subtract(NowTime);
-            TimeResult.Text = "相差" + diffTime.Days.ToString() + "天";
+            TimeResult.Text = SetTime.ToLongDateString().ToString()+"倒计时:";
+            TimeResultShow.Text = diffTime.Days.ToString() + "天";
             new ToastContentBuilder()
-                .AddText("距离设定日期相差" + diffTime.Days.ToString() + "天")
+                .AddText("今天距离设定日期相差" + diffTime.Days.ToString() + "天")
                 .Show();
         }
 
+    
     }
 }
